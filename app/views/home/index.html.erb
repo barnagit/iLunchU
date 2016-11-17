@@ -1,0 +1,31 @@
+<h1>List Lunches</h1>
+
+<table>
+<tr>
+<th>title</th>
+<th>food</th>
+<th>max guests</th>
+<th>cook</th>
+<th>guests</th>
+</tr>
+
+<% @lunches.each do |lunch| %>
+  <tr>
+    <td><%= lunch.title %></td>
+	<td><%= lunch.food %></td>
+	<td><%= lunch.max_guests %></td>
+	<td><%= lunch.User.name %></td>
+	
+	<td>
+	  <ul>
+	    <%lunch.Guests.each do |guest| %>
+	      <li>
+		    <%= guest.User.name %>
+		  </li>
+	    <% end %>
+	  </ul>
+	</td>
+	
+  </tr>
+<% end %>
+</table>

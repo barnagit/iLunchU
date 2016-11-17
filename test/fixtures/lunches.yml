@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  food: MyText
+  max_guests: 1
+  date: 2016-11-17 18:03:37
+  location: MyString
+  User: one
+
+two:
+  title: MyString
+  food: MyText
+  max_guests: 1
+  date: 2016-11-17 18:03:37
+  location: MyString
+  User: two
