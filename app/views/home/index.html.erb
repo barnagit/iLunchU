@@ -1,5 +1,6 @@
-<h1>List Lunches</h1>
+<%= link_to 'New lunch', new_lunch_path %>
 
+<h1>List Lunches</h1>
 <table>
 <tr>
 <th>title</th>
@@ -11,19 +12,29 @@
 
 <% @lunches.each do |lunch| %>
   <tr>
-    <td><%= lunch.title %></td>
-	<td><%= lunch.food %></td>
-	<td><%= lunch.max_guests %></td>
-	<td><%= lunch.User.name %></td>
-	
+  
+  <td><%= lunch.title %></td>
+  <td><%= lunch.food %></td>
+  <td><%= lunch.max_guests %></td>
+  <td><%= lunch.User.email %></td>
 	<td>
-	  <ul>
-	    <%lunch.Guests.each do |guest| %>
-	      <li>
-		    <%= guest.User.name %>
-		  </li>
-	    <% end %>
-	  </ul>
+    <ul>
+    <%lunch.Guests.each do |guest| %>
+        <li>
+          <%= guest.User.email %>
+        </li>
+    <% end %>
+    </ul>
+	
+	<% if lunch.User != current_user %>
+		<%= form_tag "/guests/create" do %>
+			<%= hidden_field_tag(:lunch_id, lunch.id) %>
+			<p>
+				<%= submit_tag "Add me!" %>
+			</p>
+		<% end %>
+	<% end %>
+	
 	</td>
 	
   </tr>
